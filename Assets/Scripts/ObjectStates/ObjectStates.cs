@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class IdleObjectState : IObjectStates
@@ -47,19 +48,31 @@ public class SelectedObjectState : IObjectStates
 
 public class GrabbedObjectState : IObjectStates
 {
+	public Vector3 screenPoint;
+	public Vector3 offset;
 	public void OnEnterState(ObjectManager obj)
 	{
-
+		screenPoint = Camera.main.WorldToScreenPoint(obj.transform.position);
+		offset = obj.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
 	}
 	public void OnUpdateState(ObjectManager obj)
 	{
-		Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, obj.screenPoint.z);
-		obj.currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + obj.offset;
-		obj.transform.position = obj.currentPosition;
+		FollowMouse(obj);
+		if (Input.GetMouseButtonUp(0))
+		{
+			obj.SetState(new IdleObjectState());
+		}
 	}
 	public void OnExitState(ObjectManager obj)
 	{
 
+	}
+
+	public void FollowMouse(ObjectManager obj)
+	{
+		Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+		obj.currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + offset;
+		obj.transform.position = obj.currentPosition;
 	}
 }
 
