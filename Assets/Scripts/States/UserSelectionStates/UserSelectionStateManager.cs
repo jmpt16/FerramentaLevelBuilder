@@ -16,7 +16,6 @@ public class UserSelectionStateManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("USER: " + currentState);
         currentState.OnUpdateState(this);
     }
 

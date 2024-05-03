@@ -15,7 +15,6 @@ public class SpawnObject : MonoBehaviour, IPointerDownHandler
 	{
 		if (InstantiateModeManager.InstMode_IsDrag == true)
 		{
-			//userSelectionManager.GetComponent<UserSelectionStateManager>().selectedObject = gameObject;
 			Vector3 mousePosition = Input.mousePosition;
 			mousePosition.z = 10;
 			Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
