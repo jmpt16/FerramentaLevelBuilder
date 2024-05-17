@@ -111,8 +111,9 @@ public class MovementGizmoObjectState : IObjectStates
 	public void OnEnterState(ObjectManager obj)
 	{
 		obj.Child_MovementGizmo.SetActive(true);
-		//obj.GetComponent<BoxCollider>().enabled = false;
-	}
+        obj.Child_MovementGizmo.transform.rotation = Quaternion.identity;
+        //obj.GetComponent<BoxCollider>().enabled = false;
+    }
 
 	public void OnUpdateState(ObjectManager obj)
 	{
