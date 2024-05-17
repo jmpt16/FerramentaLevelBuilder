@@ -1,5 +1,7 @@
 ﻿using System.Runtime.Serialization;
+using UnityEditor.Build.Content;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class IdleObjectState : IObjectStates
 {
@@ -9,7 +11,7 @@ public class IdleObjectState : IObjectStates
 	{
 		obj.Child_MovementGizmo.SetActive(false);
 		obj.Child_RotationGizmo.SetActive(false);
-		obj.GetComponent<BoxCollider>().enabled = true;
+		//obj.GetComponent<BoxCollider>().enabled = true;
 	}
 	public void OnUpdateState(ObjectManager obj)
 	{
@@ -35,7 +37,7 @@ public class SelectedObjectState : IObjectStates
 	{
 		obj.Child_MovementGizmo.SetActive(false);
 		obj.Child_RotationGizmo.SetActive(false);
-		obj.GetComponent<BoxCollider>().enabled = true;
+		//obj.GetComponent<BoxCollider>().enabled = true;
 	}
 
     public void OnUpdateState(ObjectManager obj)
@@ -109,7 +111,7 @@ public class MovementGizmoObjectState : IObjectStates
 	public void OnEnterState(ObjectManager obj)
 	{
 		obj.Child_MovementGizmo.SetActive(true);
-		obj.GetComponent<BoxCollider>().enabled = false;
+		//obj.GetComponent<BoxCollider>().enabled = false;
 	}
 
 	public void OnUpdateState(ObjectManager obj)
@@ -139,7 +141,6 @@ public class GMoveXObjectState : IObjectStates
 
 	public void OnUpdateState(ObjectManager obj)
 	{
-		Debug.Log("MOVING ON THE X AXIS");
 		FollowMouse_X(obj);
 		if (Input.GetMouseButtonUp(0))
 		{
@@ -173,7 +174,6 @@ public class GMoveYObjectState : IObjectStates
 
 	public void OnUpdateState(ObjectManager obj)
 	{
-		Debug.Log("MOVING ON THE Y AXIS");
 		FollowMouse_Y(obj);
 		if (Input.GetMouseButtonUp(0))
 		{
@@ -206,7 +206,6 @@ public class GMoveZObjectState : IObjectStates
 
 	public void OnUpdateState(ObjectManager obj)
 	{
-		Debug.Log("MOVING ON THE Z AXIS");
 		FollowMouse_Z(obj);
 		if (Input.GetMouseButtonUp(0))
 		{
@@ -234,7 +233,7 @@ public class RotationGizmoObjectState : IObjectStates
 	public void OnEnterState(ObjectManager obj)
 	{
 		obj.Child_RotationGizmo.SetActive(true);
-		obj.GetComponent<BoxCollider>().enabled = false;
+		//obj.GetComponent<BoxCollider>().enabled = false;
 	}
 
 	public void OnUpdateState(ObjectManager obj)
@@ -253,15 +252,17 @@ public class RotationGizmoObjectState : IObjectStates
 
 public class GRotateXObjectState : IObjectStates
 {
-	public void OnEnterState(ObjectManager obj)
+	public float rotationSpeed = 4f;
+
+    public void OnEnterState(ObjectManager obj)
 	{
 
-	}
+    }
 
 	public void OnUpdateState(ObjectManager obj)
 	{
-		Debug.Log("ROTATING ON THE X AXIS");
-		if (Input.GetMouseButtonUp(0))
+		RotateMouse_X(obj);
+        if (Input.GetMouseButtonUp(0))
 		{
 			obj.SetState(new RotationGizmoObjectState());
 		}
@@ -271,18 +272,28 @@ public class GRotateXObjectState : IObjectStates
 	{
 
 	}
+
+    public void RotateMouse_X(ObjectManager obj)
+    {
+		float rotX = Input.GetAxis("Mouse X") * rotationSpeed;
+		//float rotY = Input.GetAxis("Mouse Y") * rotationSpeed;
+
+		obj.transform.rotation = Quaternion.AngleAxis(rotX, obj.transform.right) * obj.transform.rotation;
+    }
 }
 
 public class GRotateYObjectState : IObjectStates
 {
-	public void OnEnterState(ObjectManager obj)
+    public float rotationSpeed = 4f;
+
+    public void OnEnterState(ObjectManager obj)
 	{
 
 	}
 
 	public void OnUpdateState(ObjectManager obj)
 	{
-		Debug.Log("ROTATING ON THE Y AXIS");
+		RotateMouse_Y(obj);
 		if (Input.GetMouseButtonUp(0))
 		{
 			obj.SetState(new RotationGizmoObjectState());
@@ -293,18 +304,29 @@ public class GRotateYObjectState : IObjectStates
 	{
 
 	}
+
+    public void RotateMouse_Y(ObjectManager obj)
+    {
+        float rotX = Input.GetAxis("Mouse X") * rotationSpeed;
+        //float rotY = Input.GetAxis("Mouse Y") * rotationSpeed;
+
+        obj.transform.rotation = Quaternion.AngleAxis(rotX, -obj.transform.up) * obj.transform.rotation;
+    }
 }
 
 public class GRotateZObjectState : IObjectStates
 {
-	public void OnEnterState(ObjectManager obj)
+    public float rotationSpeed = 4f;
+
+    public void OnEnterState(ObjectManager obj)
 	{
 
 	}
 
 	public void OnUpdateState(ObjectManager obj)
 	{
-		Debug.Log("ROTATING ON THE Z AXIS");
+		RotateMouse_Z(obj);
+
 		if (Input.GetMouseButtonUp(0))
 		{
 			obj.SetState(new RotationGizmoObjectState());
@@ -315,5 +337,13 @@ public class GRotateZObjectState : IObjectStates
 	{
 
 	}
+
+    public void RotateMouse_Z(ObjectManager obj)
+    {
+        float rotX = Input.GetAxis("Mouse X") * rotationSpeed;
+        //float rotY = Input.GetAxis("Mouse Y") * rotationSpeed;
+
+        obj.transform.rotation = Quaternion.AngleAxis(rotX, -obj.transform.forward) * obj.transform.rotation;
+    }
 }
 #endregion
