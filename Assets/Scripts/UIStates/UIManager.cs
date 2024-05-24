@@ -11,10 +11,6 @@ public class UIManager : MonoBehaviour
     public GameObject mainMenuObj;
     public GameObject selectMenuObj;
 
-    //prefabs
-    public GameObject sphere;
-    public GameObject cube;
-
     void Start()
     {
         SetState(new MainMenuUIState());
@@ -51,18 +47,6 @@ public class UIManager : MonoBehaviour
 	public void ReturnToMainScreen()
     {
         SetState(new MainMenuUIState());
-    }
-
-    //spawns a sphere
-    public void SpawnSphere()
-    {
-        Instantiate(sphere);
-    }
-
-    //spawns a cube
-    public void SpawnCube()
-    {
-        Instantiate(cube);
     }
 	#endregion
 }
