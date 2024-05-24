@@ -9,6 +9,7 @@ public class ObjectManager : MonoBehaviour
 	public Vector3 screenPoint;
 	public Vector3 offset;
 	public Vector3 currentPosition;
+	public Vector3 currentScale;
 
 	//movement gizmos
 	public GameObject Child_MovementGizmo;

@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using JetBrains.Annotations;
+using System.Runtime.Serialization;
 using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,6 +12,7 @@ public class IdleObjectState : IObjectStates
 	{
 		obj.Child_MovementGizmo.SetActive(false);
 		obj.Child_RotationGizmo.SetActive(false);
+		obj.Child_ScaleGizmo.SetActive(false);
 		//obj.GetComponent<BoxCollider>().enabled = true;
 	}
 	public void OnUpdateState(ObjectManager obj)
@@ -19,11 +21,6 @@ public class IdleObjectState : IObjectStates
 		hueValue %= 1f;
 		Color currentColor = Color.HSVToRGB(hueValue, 1, 1);
 		obj.renderer.material.color = currentColor;
-
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			obj.SetState(new SelectedObjectState());
-		}
 	}
 	public void OnExitState(ObjectManager obj)
 	{
@@ -37,6 +34,7 @@ public class SelectedObjectState : IObjectStates
 	{
 		obj.Child_MovementGizmo.SetActive(false);
 		obj.Child_RotationGizmo.SetActive(false);
+		obj.Child_ScaleGizmo.SetActive(false);
 		//obj.GetComponent<BoxCollider>().enabled = true;
 	}
 
@@ -50,6 +48,11 @@ public class SelectedObjectState : IObjectStates
 		if (Input.GetKeyDown(KeyCode.R))
 		{
 			obj.SetState(new RotationGizmoObjectState());
+		}
+
+		if (Input.GetKeyDown(KeyCode.B))
+		{
+			obj.SetState(new ScaleGizmoObjectState());
 		}
     }
 
@@ -158,8 +161,7 @@ public class GMoveXObjectState : IObjectStates
 	{
 		Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 		obj.currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + offset;
-		obj.transform.position = new Vector3(obj.currentPosition.x,obj.transform.position.y,obj.transform.position.z);
-			
+		obj.transform.position = new Vector3(obj.currentPosition.x,obj.transform.position.y,obj.transform.position.z);	
 	}
 }
 
@@ -354,12 +356,15 @@ public class ScaleGizmoObjectState : IObjectStates
 {
 	public void OnEnterState(ObjectManager obj)
 	{
-
-	}
+        obj.Child_ScaleGizmo.SetActive(true);
+    }
 
     public void OnUpdateState(ObjectManager obj)
     {
-
+		if (Input.GetKeyDown(KeyCode.B))
+		{
+			obj.SetState(new SelectedObjectState());
+		}
     }
 
     public void OnExitState(ObjectManager obj)
@@ -388,19 +393,40 @@ public class GScaleCenterObjectState : IObjectStates
 
 public class GScaleXObjectState : IObjectStates
 {
+    public Vector3 screenPoint;
+    public Vector3 offset;
+	public Vector3 minScale = new Vector3(0.01f, 0.01f, 0.01f);
+
     public void OnEnterState(ObjectManager obj)
     {
-
+        screenPoint = Camera.main.WorldToScreenPoint(obj.transform.position);
+        offset = obj.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
     }
 
     public void OnUpdateState(ObjectManager obj)
     {
-
+		ScaleMouse_X(obj);
+        if (Input.GetMouseButtonUp(0))
+        {
+            obj.SetState(new ScaleGizmoObjectState());
+        }
     }
 
     public void OnExitState(ObjectManager obj)
     {
 
+    }
+
+    public void ScaleMouse_X(ObjectManager obj)
+    {
+        Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+        obj.currentScale = Camera.main.ScreenToWorldPoint(currentScreenPoint) + offset;
+		if (obj.transform.localScale.x > minScale.x)
+		{
+            obj.transform.localScale = new Vector3(Mathf.Abs(obj.currentScale.x), obj.transform.localScale.y, obj.transform.localScale.z);
+        }
+
+		Debug.Log(obj.currentScale);
     }
 }
 
