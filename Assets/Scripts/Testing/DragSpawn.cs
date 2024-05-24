@@ -32,7 +32,8 @@ public class DragSpawn : MonoBehaviour, IPointerDownHandler
 		}
         else
         {
-            Instantiate(obj);
+            Vector3 cameraPosAhead = Camera.main.transform.position + Camera.main.transform.forward * 10;
+            Instantiate(obj, cameraPosAhead,Quaternion.identity);
         }
 		
 	}
