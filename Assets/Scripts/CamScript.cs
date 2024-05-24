@@ -5,7 +5,7 @@ using UnityEngine;
 public class CamScript : MonoBehaviour
 {
     public float moveSpeed, rotSpeed;
-    // Update is called once per frame
+
     void Update()
     {
         Vector3 forwardAxis = transform.forward * Input.GetAxisRaw("Vertical");
