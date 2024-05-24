@@ -33,7 +33,13 @@ public class DragSpawn : MonoBehaviour, IPointerDownHandler
         else
         {
             Vector3 cameraPosAhead = Camera.main.transform.position + Camera.main.transform.forward * 10;
-            Instantiate(obj, cameraPosAhead,Quaternion.identity);
+
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 10))
+            {
+                cameraPosAhead = hit.point;
+            }
+            Instantiate(obj, cameraPosAhead, Quaternion.identity);
         }
 		
 	}
