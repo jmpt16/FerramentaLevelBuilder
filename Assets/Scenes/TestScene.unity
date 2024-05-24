@@ -1485,8 +1485,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuObj: {fileID: 690423558}
   selectMenuObj: {fileID: 298935709}
-  sphere: {fileID: 5998863574793820221, guid: 65b2b07584385e3479cbba7eb1f823cd, type: 3}
-  cube: {fileID: 4714548646289039263, guid: 01051a65eef8f8b48af17690aaf68db2, type: 3}
 --- !u!114 &719685835
 MonoBehaviour:
   m_ObjectHideFlags: 0

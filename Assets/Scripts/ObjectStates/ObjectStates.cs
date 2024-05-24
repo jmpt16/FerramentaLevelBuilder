@@ -348,3 +348,95 @@ public class GRotateZObjectState : IObjectStates
     }
 }
 #endregion
+
+#region Scale Gizmo Classes
+public class ScaleGizmoObjectState : IObjectStates
+{
+	public void OnEnterState(ObjectManager obj)
+	{
+
+	}
+
+    public void OnUpdateState(ObjectManager obj)
+    {
+
+    }
+
+    public void OnExitState(ObjectManager obj)
+    {
+
+    }
+}
+
+public class GScaleCenterObjectState : IObjectStates
+{
+    public void OnEnterState(ObjectManager obj)
+    {
+
+    }
+
+    public void OnUpdateState(ObjectManager obj)
+    {
+
+    }
+
+    public void OnExitState(ObjectManager obj)
+    {
+
+    }
+}
+
+public class GScaleXObjectState : IObjectStates
+{
+    public void OnEnterState(ObjectManager obj)
+    {
+
+    }
+
+    public void OnUpdateState(ObjectManager obj)
+    {
+
+    }
+
+    public void OnExitState(ObjectManager obj)
+    {
+
+    }
+}
+
+public class GScaleYObjectState : IObjectStates
+{
+    public void OnEnterState(ObjectManager obj)
+    {
+
+    }
+
+    public void OnUpdateState(ObjectManager obj)
+    {
+
+    }
+
+    public void OnExitState(ObjectManager obj)
+    {
+
+    }
+}
+
+public class GScaleZObjectState : IObjectStates
+{
+    public void OnEnterState(ObjectManager obj)
+    {
+
+    }
+
+    public void OnUpdateState(ObjectManager obj)
+    {
+
+    }
+
+    public void OnExitState(ObjectManager obj)
+    {
+
+    }
+}
+#endregion

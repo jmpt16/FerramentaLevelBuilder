@@ -22,6 +22,13 @@ public class ObjectManager : MonoBehaviour
 	public GameObject GRotateY;
 	public GameObject GRotateZ;
 
+	//scale gizmos
+	public GameObject Child_ScaleGizmo;
+	public GameObject GScaleCenter;
+	public GameObject GScaleX;
+	public GameObject GScaleY;
+	public GameObject GScaleZ;
+
 	private void Start()
 	{
 		if (InstantiateModeManager.InstMode_IsDrag == true)

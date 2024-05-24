@@ -109,8 +109,14 @@ public class SelectedUserSelectionState : IUserSelectionStates
 	public GameObject rotateGizmoY;
 	public GameObject rotateGizmoZ;
 
-	//vars for the hold/click check
-	private float mouseHoldDelay = 0.2f;
+    //scale gizmos
+	public GameObject scaleGizmoCenter;
+    public GameObject scaleGizmoX;
+    public GameObject scaleGizmoY;
+    public GameObject scaleGizmoZ;
+
+    //vars for the hold/click check
+    private float mouseHoldDelay = 0.2f;
 	private float clickTime = 0f;
 	public void OnEnterState(UserSelectionStateManager manager)
 	{
@@ -129,7 +135,13 @@ public class SelectedUserSelectionState : IUserSelectionStates
 		rotateGizmoX = currentObject.GetComponent<ObjectManager>().GRotateX;
 		rotateGizmoY = currentObject.GetComponent <ObjectManager>().GRotateY;
 		rotateGizmoZ = currentObject.GetComponent<ObjectManager>().GRotateZ;
-	}
+
+		//init scale gizmos
+		scaleGizmoCenter = currentObject.GetComponent<ObjectManager>().GScaleCenter;
+        scaleGizmoX = currentObject.GetComponent<ObjectManager>().GScaleX;
+        scaleGizmoY = currentObject.GetComponent<ObjectManager>().GScaleY;
+        scaleGizmoZ = currentObject.GetComponent<ObjectManager>().GScaleZ;
+    }
 
 	public void OnUpdateState(UserSelectionStateManager manager)
 	{
@@ -198,7 +210,24 @@ public class SelectedUserSelectionState : IUserSelectionStates
 							currentObject.GetComponent<ObjectManager>().SetState(new GRotateZObjectState());
 							manager.SetState(new GrabGizmoUserSelectionState());
 							break;
-					}
+						//scale gizmos
+						case var _ when selectedGizmo == scaleGizmoCenter:
+							currentObject.GetComponent<ObjectManager>().SetState(new GScaleCenterObjectState());
+							manager.SetState(new GrabGizmoUserSelectionState());
+							break;
+                        case var _ when selectedGizmo == scaleGizmoX:
+                            currentObject.GetComponent<ObjectManager>().SetState(new GScaleXObjectState());
+                            manager.SetState(new GrabGizmoUserSelectionState());
+                            break;
+                        case var _ when selectedGizmo == scaleGizmoY:
+                            currentObject.GetComponent<ObjectManager>().SetState(new GScaleYObjectState());
+                            manager.SetState(new GrabGizmoUserSelectionState());
+                            break;
+                        case var _ when selectedGizmo == scaleGizmoZ:
+                            currentObject.GetComponent<ObjectManager>().SetState(new GScaleZObjectState());
+                            manager.SetState(new GrabGizmoUserSelectionState());
+                            break;
+                    }
 				}
 				else if (selectedGizmo == null)
 				{
