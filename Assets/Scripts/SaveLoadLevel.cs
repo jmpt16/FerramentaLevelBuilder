@@ -8,6 +8,7 @@ public class SaveLoadLevel : MonoBehaviour
 
     public GameObject Child_MovementGizmo;
     public GameObject Child_RotationGizmo;
+    public GameObject Child_ScaleGizmo;
 
     public void WriteToFile() {
         LevelData data = new LevelData();
@@ -26,11 +27,13 @@ public class SaveLoadLevel : MonoBehaviour
         data.positions = new Vector3[data.listSize];
         data.rotations = new Quaternion[data.listSize];
         data.meshes = new Mesh[data.listSize];
+        data.names = new string[data.listSize];
         for (int i = 0; i < data.listSize; i++)
         {
             data.positions[i] = allGMs[i].transform.position;
             data.rotations[i] = allGMs[i].transform.localRotation;
             data.meshes[i] = allGMs[i].transform.GetComponent<MeshFilter>().sharedMesh;
+            data.names[i] = allGMs[i].transform.gameObject.name;
         }
 
         string json = JsonUtility.ToJson(data);
@@ -48,6 +51,7 @@ public class SaveLoadLevel : MonoBehaviour
             objToSpawn.transform.position = data.positions[i];
             objToSpawn.transform.rotation = data.rotations[i];
             objToSpawn.transform.tag = "Object";
+            objToSpawn.transform.gameObject.name = data.names[i];
             objToSpawn.AddComponent<MeshFilter>();
             objToSpawn.AddComponent<MeshRenderer>();
             objToSpawn.AddComponent<BoxCollider>();
@@ -79,6 +83,12 @@ public class SaveLoadLevel : MonoBehaviour
         objManager.GRotateX = objManager.Child_RotationGizmo.transform.Find("GizmoXRotation").gameObject;
         objManager.GRotateY = objManager.Child_RotationGizmo.transform.Find("GizmoYRotation").gameObject;
         objManager.GRotateZ = objManager.Child_RotationGizmo.transform.Find("GizmoZRotation").gameObject;
+
+        objManager.Child_ScaleGizmo = Instantiate(Child_ScaleGizmo, objManager.transform);
+        objManager.GScaleCenter = objManager.Child_ScaleGizmo.transform.Find("ScaleGizmoCenter").gameObject;
+        objManager.GScaleX = objManager.Child_ScaleGizmo.transform.Find("ScaleGizmoX").gameObject;
+        objManager.GScaleY = objManager.Child_ScaleGizmo.transform.Find("ScaleGizmoY").gameObject;
+        objManager.GScaleZ = objManager.Child_ScaleGizmo.transform.Find("ScaleGizmoZ").gameObject;
 
         InstantiateModeManager.InstMode_IsDrag = false;
         objManager.SetState(new IdleObjectState());

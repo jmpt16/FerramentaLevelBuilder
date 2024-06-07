@@ -9,6 +9,7 @@ public class LevelData
     //public GameObject[] allGMs;
     public int listSize;
     public Vector3[] positions;
+    public string[] names;
     public Quaternion[] rotations;
     public Mesh[] meshes;
 }

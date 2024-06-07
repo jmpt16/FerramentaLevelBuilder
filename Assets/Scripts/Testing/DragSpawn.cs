@@ -6,9 +6,8 @@ using UnityEngine.EventSystems;
 public class DragSpawn : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] GameObject obj;
-    public Vector3 screenPoint;
-    public Vector3 offset;
-    public Vector3 currentPosition;
+    [HideInInspector]
+    public Vector3 screenPoint, offset, currentPosition;
     // Start is called before the first frame update
     void Start()
     {
