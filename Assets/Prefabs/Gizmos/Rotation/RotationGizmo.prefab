@@ -1,0 +1,222 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1890347509010764666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6368800169350267074}
+  m_Layer: 3
+  m_Name: RotationGizmo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6368800169350267074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890347509010764666}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.7334719, y: -2.1749263, z: -0.8803506}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 8625613355177333730}
+  - {fileID: 9028693334976307544}
+  - {fileID: 8600632615996391858}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1001 &6012911375395407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6368800169350267074}
+    m_Modifications:
+    - target: {fileID: 8597030281003805693, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597030281003805693, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597030281003805693, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597030281003805693, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597030281003805693, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597030281003805693, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597030281003805693, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597030281003805693, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597030281003805693, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597030281003805693, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936577422303850823, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+      propertyPath: m_Name
+      value: GizmoZRotation
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+--- !u!4 &8600632615996391858 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8597030281003805693, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
+  m_PrefabInstance: {fileID: 6012911375395407}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &758962290941562924
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6368800169350267074}
+    m_Modifications:
+    - target: {fileID: 8630089779860353396, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630089779860353396, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630089779860353396, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630089779860353396, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630089779860353396, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630089779860353396, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630089779860353396, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630089779860353396, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630089779860353396, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630089779860353396, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975652353386376142, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+      propertyPath: m_Name
+      value: GizmoYRotation
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+--- !u!4 &9028693334976307544 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8630089779860353396, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+  m_PrefabInstance: {fileID: 758962290941562924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3846100136067812742
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6368800169350267074}
+    m_Modifications:
+    - target: {fileID: 4815546569624559204, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815546569624559204, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815546569624559204, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815546569624559204, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815546569624559204, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815546569624559204, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815546569624559204, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815546569624559204, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815546569624559204, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815546569624559204, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305120221200303326, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+      propertyPath: m_Name
+      value: GizmoXRotation
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+--- !u!4 &8625613355177333730 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4815546569624559204, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+  m_PrefabInstance: {fileID: 3846100136067812742}
+  m_PrefabAsset: {fileID: 0}

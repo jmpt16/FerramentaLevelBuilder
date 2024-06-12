@@ -10,10 +10,7 @@ public class IdleObjectState : IObjectStates
 	private float hueValue = 0f;
 	public void OnEnterState(ObjectManager obj)
 	{
-		obj.Child_MovementGizmo.SetActive(false);
-		obj.Child_RotationGizmo.SetActive(false);
-		obj.Child_ScaleGizmo.SetActive(false);
-		//obj.GetComponent<BoxCollider>().enabled = true;
+
 	}
 	public void OnUpdateState(ObjectManager obj)
 	{
@@ -30,35 +27,30 @@ public class IdleObjectState : IObjectStates
 
 public class SelectedObjectState : IObjectStates
 {
+	private ObjectManager objectManager;
 	public void OnEnterState(ObjectManager obj)
 	{
-		obj.Child_MovementGizmo.SetActive(false);
-		obj.Child_RotationGizmo.SetActive(false);
-		obj.Child_ScaleGizmo.SetActive(false);
-		//obj.GetComponent<BoxCollider>().enabled = true;
+		objectManager = obj;
+		#region EVENTS
+		SelectedUserSelectionState.E_TriggerMovementGizmo += HandleMovementTrigger;
+		#endregion
 	}
 
-    public void OnUpdateState(ObjectManager obj)
+	public void OnUpdateState(ObjectManager obj)
     {
-		if (Input.GetKeyDown(KeyCode.G))
-		{
-			obj.SetState(new MovementGizmoObjectState());
-		}
 
-		if (Input.GetKeyDown(KeyCode.R))
-		{
-			obj.SetState(new RotationGizmoObjectState());
-		}
-
-		if (Input.GetKeyDown(KeyCode.B))
-		{
-			obj.SetState(new ScaleGizmoObjectState());
-		}
     }
 
     public void OnExitState(ObjectManager obj)
     {
-        
+		#region EVENTS
+		SelectedUserSelectionState.E_TriggerMovementGizmo -= HandleMovementTrigger;
+		#endregion
+	}
+
+	private void HandleMovementTrigger()
+	{
+		objectManager.SetState(new MovementGizmoObjectState());
 	}
 }
 
@@ -111,16 +103,20 @@ public class DeletingObjectState : IObjectStates
 #region Movement Gizmo Classes
 public class MovementGizmoObjectState : IObjectStates
 {
+	private bool canLeave = false;
 	public void OnEnterState(ObjectManager obj)
 	{
-		obj.Child_MovementGizmo.SetActive(true);
-        obj.Child_MovementGizmo.transform.rotation = Quaternion.identity;
-        //obj.GetComponent<BoxCollider>().enabled = false;
-    }
+		Debug.Log("i like batman");
+		obj.gameObject.layer = 2;
+		//obj.Child_MovementGizmo.SetActive(true);
+		//obj.Child_MovementGizmo.transform.rotation = Quaternion.identity;
+		SelectedUserSelectionState.E_TriggerMovementGizmo += HandleEvent;
+		//obj.GetComponent<BoxCollider>().enabled = false;
+	}
 
 	public void OnUpdateState(ObjectManager obj)
 	{
-		if (Input.GetKeyDown(KeyCode.G))
+		if (canLeave == true)
 		{
 			obj.SetState(new SelectedObjectState());
 		}
@@ -128,7 +124,14 @@ public class MovementGizmoObjectState : IObjectStates
 
 	public void OnExitState(ObjectManager obj)
 	{
+		Debug.Log("bye bye");
+		SelectedUserSelectionState.E_TriggerMovementGizmo -= HandleEvent;
+		obj.gameObject.layer = 0;
+	}
 
+	private void HandleEvent()
+	{
+		canLeave = true;
 	}
 }
 
@@ -159,6 +162,7 @@ public class GMoveXObjectState : IObjectStates
 
 	public void FollowMouse_X(ObjectManager obj)
 	{
+		Debug.Log("getting tired of debugs");
 		Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 		obj.currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + offset;
 		obj.transform.position = new Vector3(obj.currentPosition.x,obj.transform.position.y,obj.transform.position.z);	
@@ -203,6 +207,7 @@ public class GMoveZObjectState : IObjectStates
 	public Vector3 offset;
 	public void OnEnterState(ObjectManager obj)
 	{
+		Debug.Log("i also like spiderman");
 		screenPoint = Camera.main.WorldToScreenPoint(obj.transform.position);
 		offset = obj.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
 	}
@@ -233,15 +238,16 @@ public class GMoveZObjectState : IObjectStates
 #region Rotation Gizmo Classes
 public class RotationGizmoObjectState : IObjectStates
 {
+	private bool canLeave = false;
 	public void OnEnterState(ObjectManager obj)
 	{
-		obj.Child_RotationGizmo.SetActive(true);
-		//obj.GetComponent<BoxCollider>().enabled = false;
+		obj.gameObject.layer = 2;
+		SelectedUserSelectionState.E_TriggerRotationGizmo += HandleEvent;
 	}
 
 	public void OnUpdateState(ObjectManager obj)
 	{
-		if (Input.GetKeyDown(KeyCode.R))
+		if (canLeave)
 		{
 			obj.SetState(new SelectedObjectState());
 		}
@@ -249,7 +255,13 @@ public class RotationGizmoObjectState : IObjectStates
 
 	public void OnExitState(ObjectManager obj)
 	{
+		SelectedUserSelectionState.E_TriggerRotationGizmo -= HandleEvent;
+		obj.gameObject.layer = 0;
+	}
 
+	private void HandleEvent()
+	{
+		canLeave = true;
 	}
 }
 
@@ -354,14 +366,16 @@ public class GRotateZObjectState : IObjectStates
 #region Scale Gizmo Classes
 public class ScaleGizmoObjectState : IObjectStates
 {
+	private bool canLeave = false;
 	public void OnEnterState(ObjectManager obj)
 	{
-        obj.Child_ScaleGizmo.SetActive(true);
+		SelectedUserSelectionState.E_TriggerScaleGizmo += HandleEvent;
+		obj.gameObject.layer = 2;
     }
 
     public void OnUpdateState(ObjectManager obj)
     {
-		if (Input.GetKeyDown(KeyCode.B))
+		if (canLeave == true)
 		{
 			obj.SetState(new SelectedObjectState());
 		}
@@ -369,15 +383,24 @@ public class ScaleGizmoObjectState : IObjectStates
 
     public void OnExitState(ObjectManager obj)
     {
+		SelectedUserSelectionState.E_TriggerScaleGizmo -= HandleEvent;
+		obj.gameObject.layer = 0;
+	}
 
-    }
+	private void HandleEvent()
+	{
+		canLeave = true;
+	}
 }
 
 public class GScaleCenterObjectState : IObjectStates
 {
+	private Vector3 initialScale;
+	private Vector3 initialMousePosition;
     public void OnEnterState(ObjectManager obj)
     {
-
+		initialScale = obj.transform.localScale;
+		initialMousePosition = Input.mousePosition;
     }
 
     public void OnUpdateState(ObjectManager obj)
@@ -393,54 +416,61 @@ public class GScaleCenterObjectState : IObjectStates
 
 public class GScaleXObjectState : IObjectStates
 {
-    public Vector3 screenPoint;
-    public Vector3 offset;
-	public Vector3 minScale = new Vector3(0.01f, 0.01f, 0.01f);
+	private Vector3 initialScale;
+	private Vector3 initialMousePosition;
+	private Vector3 newScale;
+	private float minScale = 0.1f;
+	private float maxScale = 50f;
+	public void OnEnterState(ObjectManager obj)
+	{
+		initialScale = obj.transform.localScale;
+		newScale = initialScale;
+		initialMousePosition = Input.mousePosition;
+	}
 
-    public void OnEnterState(ObjectManager obj)
-    {
-        screenPoint = Camera.main.WorldToScreenPoint(obj.transform.position);
-        offset = obj.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
-    }
-
-    public void OnUpdateState(ObjectManager obj)
-    {
-		ScaleMouse_X(obj);
-        if (Input.GetMouseButtonUp(0))
-        {
-            obj.SetState(new ScaleGizmoObjectState());
-        }
-    }
-
-    public void OnExitState(ObjectManager obj)
-    {
-
-    }
-
-    public void ScaleMouse_X(ObjectManager obj)
-    {
-        Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-        obj.currentScale = Camera.main.ScreenToWorldPoint(currentScreenPoint) + offset;
-		if (obj.transform.localScale.x > minScale.x)
+	public void OnUpdateState(ObjectManager obj)
+	{
+		if (Input.GetMouseButtonUp(0))
 		{
-            obj.transform.localScale = new Vector3(Mathf.Abs(obj.currentScale.x), obj.transform.localScale.y, obj.transform.localScale.z);
-        }
+			obj.SetState(new ScaleGizmoObjectState());
+		}
+		Vector3 mouseDelta = Input.mousePosition - initialMousePosition;
+		float scaleAmount = mouseDelta.x * 0.01f;
+		newScale.x = Mathf.Clamp(initialScale.x + scaleAmount, minScale, maxScale);
+		obj.transform.localScale = newScale;
+	}
 
-		Debug.Log(obj.currentScale);
-    }
+	public void OnExitState(ObjectManager obj)
+	{
+
+	}
 }
 
 public class GScaleYObjectState : IObjectStates
 {
-    public void OnEnterState(ObjectManager obj)
+	private Vector3 initialScale;
+	private Vector3 initialMousePosition;
+	private Vector3 newScale;
+	private float minScale = 0.1f;
+	private float maxScale = 50f;
+	public void OnEnterState(ObjectManager obj)
     {
-
-    }
+		initialScale = obj.transform.localScale;
+		newScale = initialScale;
+		initialMousePosition = Input.mousePosition;
+	}
 
     public void OnUpdateState(ObjectManager obj)
     {
-
-    }
+		if (Input.GetMouseButtonUp(0))
+		{
+			obj.SetState(new ScaleGizmoObjectState());
+		}
+		Vector3 mouseDelta = Input.mousePosition - initialMousePosition;
+		float scaleAmount = mouseDelta.y * 0.01f;
+		newScale.y = Mathf.Clamp(initialScale.y + scaleAmount, minScale, maxScale);
+		obj.transform.localScale = newScale;
+	}
 
     public void OnExitState(ObjectManager obj)
     {
@@ -450,19 +480,33 @@ public class GScaleYObjectState : IObjectStates
 
 public class GScaleZObjectState : IObjectStates
 {
-    public void OnEnterState(ObjectManager obj)
-    {
+	private Vector3 initialScale;
+	private Vector3 initialMousePosition;
+	private Vector3 newScale;
+	private float minScale = 0.1f;
+	private float maxScale = 50f;
+	public void OnEnterState(ObjectManager obj)
+	{
+		initialScale = obj.transform.localScale;
+		newScale = initialScale;
+		initialMousePosition = Input.mousePosition;
+	}
 
-    }
+	public void OnUpdateState(ObjectManager obj)
+	{
+		if (Input.GetMouseButtonUp(0))
+		{
+			obj.SetState(new ScaleGizmoObjectState());
+		}
+		Vector3 mouseDelta = Input.mousePosition - initialMousePosition;
+		float scaleAmount = mouseDelta.x * 0.01f;
+		newScale.z = Mathf.Clamp(initialScale.z + scaleAmount, minScale, maxScale);
+		obj.transform.localScale = newScale;
+	}
 
-    public void OnUpdateState(ObjectManager obj)
-    {
+	public void OnExitState(ObjectManager obj)
+	{
 
-    }
-
-    public void OnExitState(ObjectManager obj)
-    {
-
-    }
+	}
 }
 #endregion
