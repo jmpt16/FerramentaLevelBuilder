@@ -897,7 +897,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1738945402}
-  - {fileID: 519432679}
+  - {fileID: 1053907879}
   - {fileID: 776078209}
   m_Father: {fileID: 1643229306}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -918,10 +918,10 @@ MonoBehaviour:
   xMovementGizmo: {fileID: 270515056}
   yMovementGizmo: {fileID: 1123186778}
   zMovementGizmo: {fileID: 1277110718}
-  rotationGizmo: {fileID: 519432678}
-  xRotationGizmo: {fileID: 538288231}
-  yRotationGizmo: {fileID: 973618416}
-  zRotationGizmo: {fileID: 1472220363}
+  rotationGizmo: {fileID: 8925576327479586251, guid: 20b1586b0a37c1442aa15b164c306174, type: 3}
+  xRotationGizmo: {fileID: 5288519781349583671, guid: 9fd01c56113e7e749a3950310948f5f5, type: 3}
+  yRotationGizmo: {fileID: 1966595077715212178, guid: f085b72b5b07d3547bb5bf94c7eba0c0, type: 3}
+  zRotationGizmo: {fileID: 8996147265577710379, guid: fbd764a5f20bee34c9f9fbbd33ac70ba, type: 3}
   scaleGizmo: {fileID: 776078208}
   centerScaleGizmo: {fileID: 283200714}
   xScaleGizmo: {fileID: 609824652}
@@ -942,7 +942,7 @@ MonoBehaviour:
   statesManager: {fileID: 249966404}
   movementGizmo: {fileID: 1738945401}
   scaleGizmo: {fileID: 776078208}
-  rotationGizmo: {fileID: 519432678}
+  rotationGizmo: {fileID: 8925576327479586251, guid: 20b1586b0a37c1442aa15b164c306174, type: 3}
   currentActiveGizmo: 0
   activeGizmo: {fileID: 0}
 --- !u!1 &270515056 stripped
@@ -1130,16 +1130,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494866038}
   m_CullTransparentMesh: 1
---- !u!1 &519432678 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1890347509010764666, guid: 20b1586b0a37c1442aa15b164c306174, type: 3}
-  m_PrefabInstance: {fileID: 1053907878}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &519432679 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6368800169350267074, guid: 20b1586b0a37c1442aa15b164c306174, type: 3}
-  m_PrefabInstance: {fileID: 1053907878}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &525860383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,11 +1209,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525860383}
   m_CullTransparentMesh: 1
---- !u!1 &538288231 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9007064057752422744, guid: 20b1586b0a37c1442aa15b164c306174, type: 3}
-  m_PrefabInstance: {fileID: 1053907878}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &554530180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,11 +1789,6 @@ MonoBehaviour:
   Child_MovementGizmo: {fileID: 0}
   Child_RotationGizmo: {fileID: 0}
   Child_ScaleGizmo: {fileID: 0}
---- !u!1 &973618416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8504920817124211682, guid: 20b1586b0a37c1442aa15b164c306174, type: 3}
-  m_PrefabInstance: {fileID: 1053907878}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &996807417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2202,11 +2182,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8925576327479586251, guid: 20b1586b0a37c1442aa15b164c306174, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b1586b0a37c1442aa15b164c306174, type: 3}
+--- !u!4 &1053907879 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8189721553456400793, guid: 20b1586b0a37c1442aa15b164c306174, type: 3}
+  m_PrefabInstance: {fileID: 1053907878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1089319245 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3211398071537462850, guid: dc3ffc9207922814da909ea584ce7c05, type: 3}
@@ -2521,11 +2510,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   rotSpeed: 1000
---- !u!1 &1472220363 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8939721570267093768, guid: 20b1586b0a37c1442aa15b164c306174, type: 3}
-  m_PrefabInstance: {fileID: 1053907878}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1511459467
 GameObject:
   m_ObjectHideFlags: 0

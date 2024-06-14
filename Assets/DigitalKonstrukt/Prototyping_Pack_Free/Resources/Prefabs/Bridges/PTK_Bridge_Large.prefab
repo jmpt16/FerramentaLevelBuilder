@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 33409360401775176}
   - component: {fileID: 23747146314239894}
   - component: {fileID: 64962257276867452}
+  - component: {fileID: -6006003102719164037}
   m_Layer: 0
   m_Name: PTK_Bridge_Large
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,3 +107,33 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 322afac8caa1edd40b802f584390dc2d, type: 3}
+--- !u!114 &-6006003102719164037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138342071823360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7acec053d3362314695e986fc473831b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 0}
+  screenPoint: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: 0}
+  currentPosition: {x: 0, y: 0, z: 0}
+  currentScale: {x: 0, y: 0, z: 0}
+  Child_MovementGizmo: {fileID: 0}
+  GMoveX: {fileID: 0}
+  GMoveY: {fileID: 0}
+  GMoveZ: {fileID: 0}
+  Child_RotationGizmo: {fileID: 0}
+  GRotateX: {fileID: 0}
+  GRotateY: {fileID: 0}
+  GRotateZ: {fileID: 0}
+  Child_ScaleGizmo: {fileID: 0}
+  GScaleCenter: {fileID: 0}
+  GScaleX: {fileID: 0}
+  GScaleY: {fileID: 0}
+  GScaleZ: {fileID: 0}

@@ -96,8 +96,10 @@ public class GizmoManager : MonoBehaviour
 		if (currentActiveGizmo != GizmoType.Rotation)
 		{
 			DeactivateAll();
+			
 			rotationGizmo.SetActive(true);
-			rotationGizmo.transform.position = statesManager.selectedObject.transform.position;
+            Debug.Log("reached");
+            rotationGizmo.transform.position = statesManager.selectedObject.transform.position;
 			activeGizmo = rotationGizmo;
 			currentActiveGizmo = GizmoType.Rotation;
 		}
