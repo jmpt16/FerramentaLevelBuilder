@@ -44,7 +44,7 @@ public class SaveLoadLevel : MonoBehaviour
     public void LoadFromFile() {
         string json = File.ReadAllText(Application.dataPath + "/levelData.json");
         LevelData data = JsonUtility.FromJson<LevelData>(json);
-
+        InstantiateModeManager.InstMode_IsDrag = false;
         for (int i = 0; i < data.listSize; i++)
         {
             GameObject objToSpawn = new GameObject();
@@ -61,7 +61,7 @@ public class SaveLoadLevel : MonoBehaviour
             objToSpawn.GetComponent<MeshFilter>().sharedMesh = data.meshes[i];
             objToSpawn.GetComponent<MeshRenderer>().material= new Material(Shader.Find("Standard"));
 
-            ObjManagerSetup(objToSpawn.GetComponent<ObjectManager>());
+            //ObjManagerSetup(objToSpawn.GetComponent<ObjectManager>());
 
             
             

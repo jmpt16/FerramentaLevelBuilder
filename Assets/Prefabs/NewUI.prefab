@@ -1472,6 +1472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Child_MovementGizmo: {fileID: 0}
   Child_RotationGizmo: {fileID: 0}
+  Child_ScaleGizmo: {fileID: 0}
 --- !u!1 &5090767623648788250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,7 +1934,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'With a selected object: S to scale, G to move, R to rotate'
+  m_text: 'With a selected object: R to rotate, G to move, B to scale'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2225,6 +2226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Child_MovementGizmo: {fileID: 0}
   Child_RotationGizmo: {fileID: 0}
+  Child_ScaleGizmo: {fileID: 0}
 --- !u!1 &6743149926734541930
 GameObject:
   m_ObjectHideFlags: 0
