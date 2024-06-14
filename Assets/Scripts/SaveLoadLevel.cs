@@ -9,6 +9,7 @@ public class SaveLoadLevel : MonoBehaviour
     public GameObject Child_MovementGizmo;
     public GameObject Child_RotationGizmo;
     public GameObject Child_ScaleGizmo;
+    public string[] names;
 
     public void WriteToFile() {
         LevelData data = new LevelData();
@@ -24,13 +25,24 @@ public class SaveLoadLevel : MonoBehaviour
         GameObject[] allGMs = levelStuff.ToArray();
 
         data.listSize = allGMs.Length;
+        data.types = new int[data.listSize];
         data.positions = new Vector3[data.listSize];
+        data.scales = new Vector3[data.listSize];
         data.rotations = new Quaternion[data.listSize];
         data.meshes = new Mesh[data.listSize];
         data.names = new string[data.listSize];
         for (int i = 0; i < data.listSize; i++)
         {
+            for (int c = 0; c < names.Length; c++)
+            {
+                if (allGMs[i].transform.gameObject.name.Contains(names[c]))
+                {
+                    data.types[i]=c+1;
+                    c = names.Length + 1;
+                }
+            }
             data.positions[i] = allGMs[i].transform.position;
+            data.scales[i] = allGMs[i].transform.localScale;
             data.rotations[i] = allGMs[i].transform.localRotation;
             data.meshes[i] = allGMs[i].transform.GetComponent<MeshFilter>().sharedMesh;
             data.names[i] = allGMs[i].transform.gameObject.name;
@@ -50,6 +62,7 @@ public class SaveLoadLevel : MonoBehaviour
             GameObject objToSpawn = new GameObject();
             objToSpawn.transform.position = data.positions[i];
             objToSpawn.transform.rotation = data.rotations[i];
+            objToSpawn.transform.localScale = data.scales[i];
             objToSpawn.transform.tag = "Object";
             objToSpawn.transform.gameObject.name = data.names[i];
             objToSpawn.AddComponent<MeshFilter>();
@@ -62,9 +75,6 @@ public class SaveLoadLevel : MonoBehaviour
             objToSpawn.GetComponent<MeshRenderer>().material= new Material(Shader.Find("Standard"));
 
             //ObjManagerSetup(objToSpawn.GetComponent<ObjectManager>());
-
-            
-            
         }
     }
     public void ObjManagerSetup(ObjectManager objManager) 
