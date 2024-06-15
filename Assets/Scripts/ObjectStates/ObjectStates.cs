@@ -397,7 +397,10 @@ public class GScaleCenterObjectState : IObjectStates
 {
 	private Vector3 initialScale;
 	private Vector3 initialMousePosition;
-    public void OnEnterState(ObjectManager obj)
+	private Vector3 newScale;
+	private float minScale = 0.1f;
+	private float maxScale = 50f;
+	public void OnEnterState(ObjectManager obj)
     {
 		initialScale = obj.transform.localScale;
 		initialMousePosition = Input.mousePosition;
@@ -405,8 +408,18 @@ public class GScaleCenterObjectState : IObjectStates
 
     public void OnUpdateState(ObjectManager obj)
     {
-
-    }
+		if (Input.GetMouseButtonUp(0))
+		{
+			obj.SetState(new ScaleGizmoObjectState());
+		}
+		Vector3 mouseDelta = Input.mousePosition - initialMousePosition;
+		float scaleAmount = (mouseDelta.x + mouseDelta.y) * 0.005f;
+		float uniformScaleX = Mathf.Clamp(initialScale.x + scaleAmount, minScale, maxScale);
+		float uniformScaleY = Mathf.Clamp(initialScale.y + scaleAmount, minScale, maxScale);
+		float uniformScaleZ = Mathf.Clamp(initialScale.z + scaleAmount, minScale, maxScale);
+		newScale = new Vector3(uniformScaleX, uniformScaleY, uniformScaleZ);
+		obj.transform.localScale = newScale;
+	}
 
     public void OnExitState(ObjectManager obj)
     {

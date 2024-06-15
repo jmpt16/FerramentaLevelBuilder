@@ -46,10 +46,10 @@ public class GizmoManager : MonoBehaviour
 	{
 		if (activeGizmo != null)
 		{
-			if (currentActiveGizmo == GizmoType.Rotation || currentActiveGizmo == GizmoType.Scale)
+			/*if (currentActiveGizmo == GizmoType.Rotation || currentActiveGizmo == GizmoType.Scale)
 			{
 				activeGizmo.transform.rotation = statesManager.selectedObject.transform.rotation;
-			}
+			}*/
 			activeGizmo.transform.position = statesManager.selectedObject.transform.position;
 		}
 	}
