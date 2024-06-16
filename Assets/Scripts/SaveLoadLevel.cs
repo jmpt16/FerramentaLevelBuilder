@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 
 public class SaveLoadLevel : MonoBehaviour
@@ -11,7 +12,12 @@ public class SaveLoadLevel : MonoBehaviour
     public GameObject Child_ScaleGizmo;
     public string[] names;
 
-    public void WriteToFile() {
+    public void ChangeLevel()
+    {
+        SceneManager.LoadScene("PlayScene");
+    }
+
+	public void WriteToFile() {
         LevelData data = new LevelData();
         ObjectManager[] objectList = GameObject.FindObjectsOfType<ObjectManager>();
         List<GameObject> levelStuff = new List<GameObject>();
