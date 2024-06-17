@@ -33,6 +33,8 @@ public class SelectedObjectState : IObjectStates
 		objectManager = obj;
 		#region EVENTS
 		SelectedUserSelectionState.E_TriggerMovementGizmo += HandleMovementTrigger;
+		SelectedUserSelectionState.E_TriggerRotationGizmo += HandleRotationTrigger;
+		SelectedUserSelectionState.E_TriggerScaleGizmo += HandleScaleTrigger;
 		#endregion
 	}
 
@@ -45,13 +47,25 @@ public class SelectedObjectState : IObjectStates
     {
 		#region EVENTS
 		SelectedUserSelectionState.E_TriggerMovementGizmo -= HandleMovementTrigger;
-		#endregion
-	}
+        SelectedUserSelectionState.E_TriggerRotationGizmo -= HandleRotationTrigger;
+        SelectedUserSelectionState.E_TriggerScaleGizmo -= HandleScaleTrigger;
+        #endregion
+    }
 
 	private void HandleMovementTrigger()
 	{
 		objectManager.SetState(new MovementGizmoObjectState());
 	}
+
+    private void HandleRotationTrigger()
+    {
+        objectManager.SetState(new RotationGizmoObjectState());
+    }
+
+    private void HandleScaleTrigger()
+    {
+        objectManager.SetState(new ScaleGizmoObjectState());
+    }
 }
 
 public class GrabbedObjectState : IObjectStates
@@ -241,6 +255,7 @@ public class RotationGizmoObjectState : IObjectStates
 	private bool canLeave = false;
 	public void OnEnterState(ObjectManager obj)
 	{
+		Debug.Log("AAAAAAAAAAA");
 		obj.gameObject.layer = 2;
 		SelectedUserSelectionState.E_TriggerRotationGizmo += HandleEvent;
 	}
