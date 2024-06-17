@@ -4,13 +4,22 @@ using System.IO;
 
 public class LevelSetup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+	public Transform[] spawners;
+	public GameObject player;
+	// Start is called before the first frame update
+	void Start()
     {
         LoadFromFile();
-    }
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Spawner");
+        spawners = new Transform[gameObjects.Length];
+        for(int i = 0; i < gameObjects.Length; i++)
+        {
+            spawners[i] = gameObjects[i].transform;
+        }
+		Instantiate(player, spawners[Random.Range(0, spawners.Length)].transform.position, Quaternion.identity);
+	}
 
-    public void LoadFromFile()
+	public void LoadFromFile()
     {
         string json = File.ReadAllText(Application.dataPath + "/levelData.json");
         LevelData data = JsonUtility.FromJson<LevelData>(json);
@@ -33,12 +42,13 @@ public class LevelSetup : MonoBehaviour
                     //objToSpawn.GetComponent<MeshCollider>().sharedMesh = data.meshes[i];
                     objToSpawn.GetComponent<MeshFilter>().sharedMesh = data.meshes[i];
                     objToSpawn.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
+                    objToSpawn.GetComponent<MeshCollider>().sharedMesh = data.meshes[i];
                     objToSpawn.GetComponent<MeshCollider>().convex = true;
                     break;
                 case 1:
                     objToSpawn.transform.position = data.positions[i];
                     objToSpawn.transform.rotation = data.rotations[i];
-                    objToSpawn.transform.tag = "Spanwer";
+                    objToSpawn.transform.tag = "Spawner";
                     break;
 
             }
