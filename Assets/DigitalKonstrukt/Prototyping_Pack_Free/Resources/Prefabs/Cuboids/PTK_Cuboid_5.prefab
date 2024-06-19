@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 33642626604321158}
   - component: {fileID: 23502500370455974}
   - component: {fileID: 64906833503721998}
+  - component: {fileID: -827217427496371785}
   m_Layer: 0
   m_Name: PTK_Cuboid_5
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,3 +107,33 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 6cfb80454aee73840b7e1a3bb551ea1b, type: 3}
+--- !u!114 &-827217427496371785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078868141710040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7acec053d3362314695e986fc473831b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 23502500370455974}
+  screenPoint: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: 0}
+  currentPosition: {x: 0, y: 0, z: 0}
+  currentScale: {x: 0, y: 0, z: 0}
+  Child_MovementGizmo: {fileID: 0}
+  GMoveX: {fileID: 0}
+  GMoveY: {fileID: 0}
+  GMoveZ: {fileID: 0}
+  Child_RotationGizmo: {fileID: 0}
+  GRotateX: {fileID: 0}
+  GRotateY: {fileID: 0}
+  GRotateZ: {fileID: 0}
+  Child_ScaleGizmo: {fileID: 0}
+  GScaleCenter: {fileID: 0}
+  GScaleX: {fileID: 0}
+  GScaleY: {fileID: 0}
+  GScaleZ: {fileID: 0}
