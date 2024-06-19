@@ -360,7 +360,7 @@ public class DeletingUserSelectionState : IUserSelectionStates
 			CheckObject();
 			if (selectedObject != null)
 			{
-				GameObject.Destroy(selectedObject);
+				selectedObject.GetComponent<ObjectManager>().SetState(new DeletingObjectState());
 			}
 		}
 	}
