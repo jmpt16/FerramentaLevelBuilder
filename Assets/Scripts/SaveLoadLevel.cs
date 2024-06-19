@@ -62,7 +62,7 @@ public class SaveLoadLevel : MonoBehaviour
     public void LoadFromFile() {
         string json = File.ReadAllText(Application.dataPath + "/levelData.json");
         LevelData data = JsonUtility.FromJson<LevelData>(json);
-        InstantiateModeManager.InstMode_IsDrag = false;
+        ToggleModeManager.InstMode_IsDrag = false;
         for (int i = 0; i < data.listSize; i++)
         {
             GameObject objToSpawn = new GameObject();

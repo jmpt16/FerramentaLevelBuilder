@@ -29,6 +29,12 @@ public class EmptyUserSelectionState : IUserSelectionStates
 
 	public void OnUpdateState(UserSelectionStateManager manager)
 	{
+		//change to delete mode
+		if (ToggleModeManager.deleteMode == true)
+		{
+			manager.SetState(new DeletingUserSelectionState());
+		}
+
 		//start the hold/click timer
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -123,6 +129,12 @@ public class SelectedUserSelectionState : IUserSelectionStates
 
 	public void OnUpdateState(UserSelectionStateManager manager)
 	{
+		//change to delete mode
+		if (ToggleModeManager.deleteMode == true)
+		{
+			manager.SetState(new DeletingUserSelectionState());
+		}
+
 		#region GIZMO EVENTS
 		if (Input.GetKeyDown(KeyCode.G))
 		{
@@ -281,7 +293,13 @@ public class DraggingUserSelectionSate : IUserSelectionStates
 
 	public void OnUpdateState(UserSelectionStateManager manager)
 	{
-		
+		//change to delete mode
+		if (ToggleModeManager.deleteMode == true)
+		{
+			manager.selectedObject.GetComponent<ObjectManager>().SetState(new IdleObjectState());
+			manager.SetState(new DeletingUserSelectionState());
+		}
+
 		if (Input.GetMouseButtonUp(0))
 		{
 			manager.selectedObject.GetComponent<ObjectManager>().SetState(new IdleObjectState());
@@ -304,6 +322,12 @@ public class GrabGizmoUserSelectionState : IUserSelectionStates
 
 	public void OnUpdateState(UserSelectionStateManager manager)
 	{
+		//change to delete mode
+		if (ToggleModeManager.deleteMode == true)
+		{
+			manager.SetState(new DeletingUserSelectionState());
+		}
+
 		if (Input.GetMouseButtonUp(0))
 		{
 			manager.SetState(new SelectedUserSelectionState());
@@ -313,5 +337,50 @@ public class GrabGizmoUserSelectionState : IUserSelectionStates
 	public void OnExitState(UserSelectionStateManager manager)
 	{
 
+	}
+}
+
+public class DeletingUserSelectionState : IUserSelectionStates
+{
+	private GameObject selectedObject;
+	public void OnEnterState(UserSelectionStateManager manager)
+	{
+
+	}
+
+	public void OnUpdateState(UserSelectionStateManager manager)
+	{
+		if (ToggleModeManager.deleteMode == false)
+		{
+			manager.SetState(new EmptyUserSelectionState());
+		}
+
+		if (Input.GetMouseButtonDown(0))
+		{
+			CheckObject();
+			if (selectedObject != null)
+			{
+				GameObject.Destroy(selectedObject);
+			}
+		}
+	}
+
+	public void OnExitState(UserSelectionStateManager manager)
+	{
+
+	}
+
+	public void CheckObject()
+	{
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
+
+		if (Physics.Raycast(ray, out hit))
+		{
+			if (hit.collider != null && hit.collider.gameObject.tag == "Object")
+			{
+				selectedObject = hit.collider.gameObject;
+			}
+		}
 	}
 }

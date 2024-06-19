@@ -756,6 +756,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 719685838}
     m_Modifications:
+    - target: {fileID: 1404028596756943628, guid: dc3ffc9207922814da909ea584ce7c05, type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2337426463276248478, guid: dc3ffc9207922814da909ea584ce7c05, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -861,16 +865,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1890347509010764666, guid: 20b1586b0a37c1442aa15b164c306174, type: 3}
     - target: {fileID: 5789842978942697997, guid: dc3ffc9207922814da909ea584ce7c05, type: 3}
+      propertyPath: m_Size
+      value: 0.29972342
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789842978942697997, guid: dc3ffc9207922814da909ea584ce7c05, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6035299084975778828, guid: dc3ffc9207922814da909ea584ce7c05, type: 3}
+      propertyPath: m_text
+      value: Click on an object to select it, or delete it in "Delete Mode"
       objectReference: {fileID: 0}
     - target: {fileID: 6118475486147832313, guid: dc3ffc9207922814da909ea584ce7c05, type: 3}
       propertyPath: m_Name
       value: NewUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7418453848758021451, guid: dc3ffc9207922814da909ea584ce7c05, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 945.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7418453848758021451, guid: dc3ffc9207922814da909ea584ce7c05, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 479
+      objectReference: {fileID: 0}
     - target: {fileID: 8291120452326562067, guid: dc3ffc9207922814da909ea584ce7c05, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2093.8901
+      value: 0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 8304044671078596135, guid: dc3ffc9207922814da909ea584ce7c05, type: 3}
       propertyPath: Child_ScaleGizmo

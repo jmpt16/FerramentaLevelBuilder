@@ -22,7 +22,7 @@ public class DragSpawn : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {
-        if (InstantiateModeManager.InstMode_IsDrag == true)
+        if (ToggleModeManager.InstMode_IsDrag == true)
         {
 			Vector3 mousePosition = Input.mousePosition;
 			mousePosition.z = 10;

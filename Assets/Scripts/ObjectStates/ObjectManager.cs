@@ -33,7 +33,7 @@ public class ObjectManager : MonoBehaviour
 	private void Start()
 	{
 		renderer = GetComponent<Renderer>();
-		if (InstantiateModeManager.InstMode_IsDrag == true)
+		if (ToggleModeManager.InstMode_IsDrag == true)
 		{
 			SetState(new GrabbedObjectState());
 		}
