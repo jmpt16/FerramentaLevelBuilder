@@ -83,31 +83,4 @@ public class SaveLoadLevel : MonoBehaviour
             //ObjManagerSetup(objToSpawn.GetComponent<ObjectManager>());
         }
     }
-    public void ObjManagerSetup(ObjectManager objManager) 
-    {
-        objManager.renderer = objManager.transform.GetComponent<MeshRenderer>();
-        objManager.screenPoint=Camera.main.ScreenToWorldPoint(objManager.transform.position);
-        objManager.offset = Vector3.zero;
-        objManager.currentPosition = objManager.transform.position;
-
-        objManager.Child_MovementGizmo=Instantiate(Child_MovementGizmo,objManager.transform);
-        objManager.GMoveX = objManager.Child_MovementGizmo.transform.Find("X_Collider").gameObject;
-        objManager.GMoveY = objManager.Child_MovementGizmo.transform.Find("Y_Collider").gameObject;
-        objManager.GMoveZ = objManager.Child_MovementGizmo.transform.Find("Z_Collider").gameObject;
-
-        objManager.Child_RotationGizmo = Instantiate(Child_RotationGizmo, objManager.transform);
-        objManager.GRotateX = objManager.Child_RotationGizmo.transform.Find("GizmoXRotation").gameObject;
-        objManager.GRotateY = objManager.Child_RotationGizmo.transform.Find("GizmoYRotation").gameObject;
-        objManager.GRotateZ = objManager.Child_RotationGizmo.transform.Find("GizmoZRotation").gameObject;
-
-        objManager.Child_ScaleGizmo = Instantiate(Child_ScaleGizmo, objManager.transform);
-        objManager.GScaleCenter = objManager.Child_ScaleGizmo.transform.Find("ScaleGizmoCenter").gameObject;
-        objManager.GScaleX = objManager.Child_ScaleGizmo.transform.Find("ScaleGizmoX").gameObject;
-        objManager.GScaleY = objManager.Child_ScaleGizmo.transform.Find("ScaleGizmoY").gameObject;
-        objManager.GScaleZ = objManager.Child_ScaleGizmo.transform.Find("ScaleGizmoZ").gameObject;
-
-        InstantiateModeManager.InstMode_IsDrag = false;
-        objManager.SetState(new IdleObjectState());
-    }
-
 }
