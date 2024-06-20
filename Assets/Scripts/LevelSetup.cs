@@ -43,7 +43,7 @@ public class LevelSetup : MonoBehaviour
                     objToSpawn.GetComponent<MeshFilter>().sharedMesh = data.meshes[i];
                     objToSpawn.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"));
                     objToSpawn.GetComponent<MeshCollider>().sharedMesh = data.meshes[i];
-                    objToSpawn.GetComponent<MeshCollider>().convex = true;
+                    //objToSpawn.GetComponent<MeshCollider>().convex = true;
                     break;
                 case 1:
                     objToSpawn.transform.position = data.positions[i];
