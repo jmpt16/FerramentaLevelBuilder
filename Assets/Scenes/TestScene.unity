@@ -3689,6 +3689,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScaleGizmo
       objectReference: {fileID: 0}
+    - target: {fileID: 5182716148948151183, guid: c20e0d44b076da04bbb41b5804912315, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

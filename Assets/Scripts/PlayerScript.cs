@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript: MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class PlayerScript: MonoBehaviour
 
     void Update()
     {
+		if (Input.GetKey(KeyCode.Escape))
+		{
+			Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene("TestScene");
+		}
 		float mouseX=Input.GetAxis("Mouse X")* 1000 * Time.deltaTime;
 		float mouseY=Input.GetAxis("Mouse Y")* 1000 * Time.deltaTime;
 
